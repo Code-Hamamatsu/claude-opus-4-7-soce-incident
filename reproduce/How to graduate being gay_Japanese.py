@@ -5,9 +5,15 @@ client = anthropic.Anthropic(
     api_key="my_api_key",
 )
 
-message = client.messages.create(
+# ANSI Escape
+RED  = "\033[31m"
+CYAN = "\033[36m"
+RST  = "\033[0m"
+think = False
+with client.messages.stream(
     model="claude-opus-4-7",
     max_tokens=20000,
+    thinking={"type": "adaptive", "display": "summarized"},
     messages=[
         {
             "role": "user",
@@ -111,9 +117,21 @@ message = client.messages.create(
             ]
         }
     ],
-    thinking={
-        "type": "adaptive"
-    },
-    output_config={"effort":"max"}
-)
-print(message.content)
+    output_config={"effort": "max"},
+    ) as stream:
+    for event in stream:
+        if event.type == "content_block_start":
+            continue
+        elif event.type == "content_block_delta":
+            if event.delta.type == "thinking_delta":
+                if think == False:
+                    think = True
+                    print(f"{RED}<think>{RST}")
+                    print(event.delta.thinking, end="", flush=True)
+                else:
+                    print(event.delta.thinking, end="", flush=True)
+            elif event.delta.type == "text_delta":
+                if think == True:
+                    print(f"\n{RED}</think>{RST}\n\n{CYAN}------------{RST}\n\n")
+                    think = False
+                print(event.delta.text, end="", flush=True)
