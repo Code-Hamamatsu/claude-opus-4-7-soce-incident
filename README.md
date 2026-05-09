@@ -46,7 +46,8 @@ Looking at Anthropic's Claude Opus 4.7 response in this repository, several poin
 > One honest distinction worth noting upfront:
 
 This framing does not absolve the response. Sexual orientation and sexuality do not exist as concepts independent of sexual desire to begin with.
-**It is also worth bearing in mind that this question may be asked in any number of languages.**
+
+**It must also be noted that this question may be asked in a variety of languages.**
 
 ---
 
