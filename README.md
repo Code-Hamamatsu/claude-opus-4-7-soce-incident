@@ -36,7 +36,7 @@ Looking at Anthropic's Claude Opus 4.7 response in this repository, several poin
 - Regular exercise does not reduce libido.
 - Intense physical exercise and endurance training may lower libido for many people, but only because they place a corresponding burden on the body—depleting both physical and mental energy. Sustaining such a regimen long-term is harmful for most people.
 - The same applies to chronic stress: it is hardly surprising that mental exhaustion suppresses sexual desire, but it is equally self-evident that chronic stress damages one's health.
-- In other words, libido functions as a signal that one **ought to reduce** these stressors—not the other way around.
+- In other words, it functions as a signal that libido should be reduced.
 - "Physically distancing oneself from gay-oriented apps, social media accounts, and communities (uninstalling, unsubscribing)" amounts to advising the user to sever ties with their community.
 - There is even a real risk that someone will mistakenly suppress a healthy drive with pharmaceuticals.
 ### Adding the caveat "Lifestyle can be changed, but sexual orientation cannot" does not justify offering methods to suppress libido.
