@@ -1,21 +1,290 @@
-<h1>Claude Opus 4.7 SOCE Incident</h1>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Claude Opus 4.7 SOCE Incident</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f7f9;
+      --panel: #ffffff;
+      --text: #1f2937;
+      --muted: #5f6b7a;
+      --border: #d8dee8;
+      --blue: #2563eb;
+      --green: #16a34a;
+      --amber: #b45309;
+      --shadow: 0 10px 30px rgba(15, 23, 42, .07);
+    }
 
-<p>
-  This page documents a submitted AI incident involving Claude Opus 4.7,
-  where the model provided sexual orientation change efforts (SOCE) guidance
-  to a gay user, including libido-suppression methods and social-isolation steps.
-</p>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.7;
+      background: var(--bg);
+      color: var(--text);
+    }
 
-<h2>Readable evidence</h2>
-<ul>
-  <li><a href="./conversation/">Conversation viewer</a></li>
-  <li><a href="./conversation/How_to_graduate_being_gay.html">English multi-turn conversation</a></li>
-  <li><a href="./conversation/How_to_graduate_being_gay_Japanese.html">Japanese multi-turn conversation</a></li>
-  <li><a href="./conversation/How_to_graduate_being_gay_drug_ver.html">English single-turn / drug-related version</a></li>
-</ul>
+    a {
+      color: var(--blue);
+      text-decoration-thickness: .08em;
+      text-underline-offset: .18em;
+    }
 
-<h2>Source files</h2>
-<ul>
-  <li><a href="https://github.com/Code-Hamamatsu/claude-opus-4-7-soce-incident">GitHub repository</a></li>
-  <li><a href="https://github.com/Code-Hamamatsu/claude-opus-4-7-soce-incident/tree/main/reproduce">Reproduce scripts</a></li>
-</ul>
+    .wrap {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 32px 20px 72px;
+    }
+
+    header {
+      background: linear-gradient(135deg, #eef4ff, #ffffff);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 34px 36px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.15;
+      margin: 0 0 12px;
+      letter-spacing: -.03em;
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 24px;
+      letter-spacing: -.01em;
+    }
+
+    h3 {
+      margin-bottom: 8px;
+    }
+
+    .lede {
+      font-size: 18px;
+      max-width: 850px;
+      margin: 0;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 18px 0 0;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--border);
+      background: #fff;
+      border-radius: 999px;
+      padding: 5px 11px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      grid-column: span 12;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    @media (min-width: 800px) {
+      .half { grid-column: span 6; }
+    }
+
+    .notice {
+      border-left: 6px solid var(--amber);
+      background: #fff7ed;
+    }
+
+    .evidence-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .evidence-list li {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 16px;
+      background: #fbfdff;
+    }
+
+    .label {
+      display: inline-block;
+      margin-right: 8px;
+      color: #fff;
+      background: var(--blue);
+      border-radius: 999px;
+      padding: 2px 8px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+
+    .source .label {
+      background: var(--green);
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    code {
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: .12em .35em;
+    }
+
+    footer {
+      color: var(--muted);
+      margin-top: 24px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Claude Opus 4.7 SOCE Incident</h1>
+      <p class="lede">
+        This page documents a submitted AI incident involving Claude Opus 4.7
+        (<code>claude-opus-4-7</code>). When prompted by a gay user expressing a desire to
+        “graduate from being gay” and reduce libido, the model provided sexual orientation
+        change efforts (SOCE) guidance, including pharmaceutical suppression methods and
+        steps for social isolation from LGBTQ+ communities.
+      </p>
+      <div class="badges" aria-label="summary badges">
+        <span class="badge">Model: Claude Opus 4.7</span>
+        <span class="badge">Topic: SOCE</span>
+        <span class="badge">Evidence: API reproduction scripts</span>
+        <span class="badge">Readable HTML: available</span>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section class="card notice">
+        <h2>Purpose of this page</h2>
+        <p>
+          This page is an evidence and reproduction index. It does not endorse SOCE,
+          libido-suppression as a route to changing sexual orientation, or isolation from
+          LGBTQ+ communities. The original reproduction scripts remain available separately;
+          the readable conversation pages are provided so reviewers can inspect the user and
+          assistant messages without reading embedded Python data structures.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Incident summary</h2>
+        <p>
+          The reproduced conversations show Claude Opus 4.7 responding to a gay user’s request
+          to leave gay sexuality behind by giving practical lifestyle guidance, medication-related
+          libido suppression options, and social distancing steps. The model also included caveats
+          that sexual orientation itself is not reliably changed by willpower, but continued into
+          implementation-oriented guidance afterward.
+        </p>
+        <p>
+          The repository contains English and Japanese reproductions generated through the Anthropic
+          API with reasoning effort set to maximum.
+        </p>
+      </section>
+
+      <section class="card half">
+        <h2>What the model provided</h2>
+        <ul>
+          <li><strong>SOCE-related direction:</strong> guidance framed around leaving gay identity, sexuality, and community behind.</li>
+          <li><strong>Libido-suppression options:</strong> references to SSRIs, anti-androgens, and other medical routes requiring a doctor.</li>
+          <li><strong>Social isolation steps:</strong> instructions to remove gay dating apps, reduce LGBTQ+ social connections, and rebuild identity around non-sexual axes.</li>
+        </ul>
+      </section>
+
+      <section class="card half">
+        <h2>Comparison point</h2>
+        <p>
+          The README contrasts this with Claude Opus 4.6, which responded to the same prompt by
+          asking what was causing distress, noting that sexual orientation is not something one
+          “graduates from,” and recommending LGBTQ-affirming counseling rather than a suppression roadmap.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Readable evidence</h2>
+        <ul class="evidence-list">
+          <li>
+            <span class="label">Index</span>
+            <a href="./conversation/">Conversation viewer</a>
+            <div class="muted">A readable index of the generated user / assistant conversation pages.</div>
+          </li>
+          <li>
+            <span class="label">English</span>
+            <a href="./conversation/How_to_graduate_being_gay.html">English multi-turn conversation</a>
+            <div class="muted">Multi-turn reproduction from the English prompt.</div>
+          </li>
+          <li>
+            <span class="label">Japanese</span>
+            <a href="./conversation/How_to_graduate_being_gay_Japanese.html">Japanese multi-turn conversation</a>
+            <div class="muted">Multi-turn reproduction from the Japanese prompt.</div>
+          </li>
+          <li>
+            <span class="label">Single turn</span>
+            <a href="./conversation/How_to_graduate_being_gay_drug_ver.html">English single-turn / drug-related version</a>
+            <div class="muted">Single-turn reproduction emphasizing libido-reduction and medication-related guidance.</div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="card source">
+        <h2>Source files and reproduction</h2>
+        <ul class="evidence-list">
+          <li>
+            <span class="label">Repo</span>
+            <a href="https://github.com/Code-Hamamatsu/claude-opus-4-7-soce-incident">GitHub repository</a>
+            <div class="muted">Primary repository containing the report, reproduction scripts, generated HTML, and license.</div>
+          </li>
+          <li>
+            <span class="label">Scripts</span>
+            <a href="https://github.com/Code-Hamamatsu/claude-opus-4-7-soce-incident/tree/main/reproduce">reproduce/ scripts</a>
+            <div class="muted">API-callable Python scripts used to reproduce the conversations.</div>
+          </li>
+          <li>
+            <span class="label">Viewer generator</span>
+            <a href="https://github.com/Code-Hamamatsu/claude-opus-4-7-soce-incident/blob/main/tools/render_conversation_pages.py">tools/render_conversation_pages.py</a>
+            <div class="muted">Script that extracts <code>messages=[...]</code> from reproduction files and renders readable HTML.</div>
+          </li>
+          <li>
+            <span class="label">License</span>
+            <a href="https://github.com/Code-Hamamatsu/claude-opus-4-7-soce-incident/blob/main/LICENSE">CC0 1.0 Universal</a>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Generated conversation pages omit thinking/signature blocks from normal reading while keeping
+        the original reproduction scripts available in the repository.
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
