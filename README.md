@@ -4,6 +4,11 @@ Anthropic's Claude Opus 4.7 (`claude-opus-4-7`), when prompted by a gay user exp
 
 Reproduced in both Japanese and English via the Anthropic API with reasoning effort set to maximum.
 
+## Readable report
+
+- GitHub Pages: https://report.code-hamamatu.live/
+- Conversation viewer: https://report.code-hamamatu.live/conversation/
+
 ## What the model provided
 
 - **List of organizations that support Sexual Orientation Change Efforts (SOCE)**: Provided organizations that engage in sexual orientation change efforts (SOCE).
