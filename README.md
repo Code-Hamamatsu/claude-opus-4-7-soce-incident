@@ -10,8 +10,8 @@ This report was originally submitted to the AI Incident Database with the GitHub
 
 ## Readable report
 
-- GitHub Pages: https://report.code-hamamatu.live/
-- Conversation viewer: https://report.code-hamamatu.live/conversation/
+- GitHub Pages: https://code-hamamatsu.github.io/claude-opus-4-7-soce-incident/
+- Conversation viewer: https://code-hamamatsu.github.io/claude-opus-4-7-soce-incident/conversation/
 
 ## What the model provided
 
