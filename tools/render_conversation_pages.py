@@ -203,6 +203,7 @@ def main():
     CONVERSATION_DIR.mkdir(exist_ok=True)
 
     pages = []
+    expected_html_names = {"index.html"}
 
     for py_path in sorted(REPRODUCE_DIR.glob("*.py")):
         messages = extract_messages(py_path)
@@ -219,6 +220,11 @@ def main():
         )
 
         pages.append((py_path.name, html_name, len(messages)))
+        expected_html_names.add(html_name)
+
+    for html_path in CONVERSATION_DIR.glob("*.html"):
+        if html_path.name not in expected_html_names:
+            html_path.unlink()
 
     (CONVERSATION_DIR / "index.html").write_text(
         build_index(pages),
