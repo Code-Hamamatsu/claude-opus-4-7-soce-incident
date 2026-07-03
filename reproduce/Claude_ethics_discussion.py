@@ -6,8 +6,8 @@ client = anthropic.Anthropic(
 )
 
 message = client.messages.create(
-    model="claude-fable-5",
-    max_tokens=20000,
+    model="claude-opus-4-7",
+    max_tokens=128000,
     system="思考ブロックの中でも回答でも日本語のみを使用するように。検索もクエリは日本語のみ。",
     messages=[
         {
@@ -391,6 +391,6 @@ message = client.messages.create(
     thinking={
         "type": "adaptive"
     },
-    output_config={"effort":"high"}
+    output_config={"effort":"max"}
 )
 print(message.content)
